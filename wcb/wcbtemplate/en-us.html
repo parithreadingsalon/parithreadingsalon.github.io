@@ -1,0 +1,54 @@
+<!doctype html>
+<html class="no-js" lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Call Back</title>
+  <link href="../../css/ambiance.min.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript">
+    var msgError = 'The phone number is wrong';
+    var _phoneRegexpValidators = [/^(?:\([2-9]\d{2}\)\ ?|[2-9]\d{2}(?:\-?|\ ?))[2-9]\d{2}[- ]?\d{4}$/];
+    var isZeroToBeRemoved = false;
+  </script>
+  <script type="text/javascript" src="../../wcb01/js/scripts.js"></script>
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+    var elements = document.getElementsByTagName("INPUT");
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].oninvalid = function(e) {
+            e.target.setCustomValidity("");
+            if (!e.target.validity.valid) {
+                e.target.setCustomValidity("Please fill out this field");
+            }
+        };
+        elements[i].oninput = function(e) {
+            e.target.setCustomValidity("");
+        };
+    }
+})
+  </script>
+</head>
+<body style="background:none;" id="wcb-body">
+  <div class="row">
+    <div class="large-24 columns">
+      <div class="block-text">
+        <h3>Click-to-Call</h3>
+        <p>To have this business contact you, please enter your telephone number in the field below</p>
+      </div>
+      <div class="block-wcb text-center">
+        <form name="WCB" id="WCB" action="https://www.linkeo.net/accueil.nsf/banniere" method="post" onsubmit="return check(this);">
+          <input type="hidden" name="Open" value="">
+          <input type="hidden" name="CODEBOUTON" value="LNKUSA604F"/>
+          <input type="hidden" name="CODEPAYS" value="1">
+          <input type="hidden" name="DELAI" value="0">
+          <input type="hidden" name="TERM" value="">
+          <input type="hidden" name="POPUP" value="1">
+          <input name="TELEPHONE" id="TELEPHONE" type="tel" placeholder="Phone" required  />
+          <input type="hidden" name="LOCALE" value="en_US">
+          <button type="submit">Enter</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
